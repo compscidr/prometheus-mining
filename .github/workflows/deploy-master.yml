@@ -1,8 +1,5 @@
 name: Deploy container
 on:
-  release:
-    types:
-      - published
   push:
     branches:
       - master
@@ -22,8 +19,6 @@ jobs:
         run: docker build -f mining-exporter/Dockerfile -t mining-exporter:${{ github.sha }} mining-exporter
       - name: tag and push
         run: |
-          docker tag mining-exporter:${{ github.sha }} compscidr/mining-exporter:${{ github.event.release.tag_name }}
-          docker push compscidr/mining-exporter:${{ github.event.release.tag_name }}
           docker tag compscidr/mining-exporter:${{ github.sha }} compscidr/mining-exporter:latest
           docker push compscidr/mining-exporter:latest
       - name: Logout of Docker Hub
