@@ -16,7 +16,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: build image
-        run: docker build -f Dockerfile -t mining-exporter:${{ github.sha }} .
+        run: docker build -f Dockerfile -t mining-exporter:${{ github.sha }} mining-exporter
       - name: tag and push
         run: |
           docker tag mining-exporter:${{ github.sha }} compscidr/mining-exporter:${{ github.event.release.tag_name }}
