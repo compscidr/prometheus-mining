@@ -19,7 +19,7 @@ jobs:
         run: docker build -f mining-exporter/Dockerfile -t mining-exporter:${{ github.sha }} mining-exporter
       - name: tag and push
         run: |
-          docker tag compscidr/mining-exporter:${{ github.sha }} compscidr/mining-exporter:latest
+          docker tag mining-exporter:${{ github.sha }} compscidr/mining-exporter:latest
           docker push compscidr/mining-exporter:latest
       - name: Logout of Docker Hub
         run: docker logout
